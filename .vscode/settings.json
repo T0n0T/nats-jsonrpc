@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"*.cpp": "cpp",
+		"*.html": "html",
+		"*.env": "dotenv",
+		"*.go": "go",
+		"float.h": "c",
+		"math.h": "c",
+		"mjson.h": "c",
+		"nats.h": "c",
+		"strbuf.h": "c"
+	},
+	"C_Cpp.default.compileCommands": "build/compile_commands.json"
+}
