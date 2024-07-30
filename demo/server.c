@@ -24,12 +24,12 @@ static void foo(struct jsonrpc_request* r)
 // Sender function receives a reply frame and must forward it to the peer.
 static int onJsonrpcBufHandle(const char* frame, int frame_len, void* privdata)
 {
-    strbuf_t buf = (strbuf_t*)privdata;
-    strview_t strbuf = {
+    strbuf_t* buf = (strbuf_t*)privdata;
+    strview_t frame_buf = {
         .data = frame,
         .size = frame_len,
     };
-    strbuf_append_strview(&buf, strbuf);
+    strbuf_append(&buf, frame_buf);
     return frame_len;
 }
 
@@ -46,8 +46,8 @@ static void onMsgServerHandle(natsConnection* nc, natsSubscription* sub, natsMsg
         // find the jsonrpc method and call it in process
         strbuf_t* buf = strbuf_create(0, NULL);
         jsonrpc_process(recv_data, strlen(recv_data), onJsonrpcBufHandle, buf, NULL);
+        natsConnection_PublishString(nc, natsMsg_GetReply(msg), buf->cstr);
         strbuf_destroy(&buf);
-        natsConnection_Publish(nc, natsMsg_GetReply(msg), frame, frame_len);
     }
 
     // Need to destroy the message!

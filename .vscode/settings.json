@@ -8,7 +8,8 @@
 		"math.h": "c",
 		"mjson.h": "c",
 		"nats.h": "c",
-		"strbuf.h": "c"
+		"strbuf.h": "c",
+		"string": "c"
 	},
 	"C_Cpp.default.compileCommands": "build/compile_commands.json"
 }
