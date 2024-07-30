@@ -1,8 +1,8 @@
 [submodule "pkg/mjson"]
 	path = pkg/mjson
 	url = https://github.com/cesanta/mjson.git
-[submodule "pkg/nats"]
-	path = pkg/nats
+[submodule "pkg/nats.c"]
+	path = pkg/nats.c
 	url = https://github.com/nats-io/nats.c.git
 [submodule "pkg/str"]
 	path = pkg/str
